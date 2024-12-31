@@ -1,6 +1,7 @@
 import HangmanFigure from "@/components/HangmanFigure";
 import WordDisplay from "@/components/WordDisplay";
 import Keyboard from "@/components/Keyboard";
+import GameModal from "./components/GameModal";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
       <WordDisplay word="vercel" guessedLetters={new Set(["v", "e", "c"])} />
 
       <Keyboard guessedLetters={new Set(["v", "e", "c", "w"])} />
+
+      <GameModal gameStatus="playing" word="vercel" onNewWord={() => {}} />
     </div>
   );
 }
