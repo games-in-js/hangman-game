@@ -8,6 +8,7 @@ const KEY_ROWS = [
 
 type KeyboardProps = {
   guessedLetters: Set<string>;
+  onGuessLetter: (letter: string) => void;
 };
 
 const KEY_CLASSES = {
@@ -15,13 +16,13 @@ const KEY_CLASSES = {
   unguessed: "bg-blue-100 text-white hover:bg-pink/80",
 };
 
-function Keyboard({ guessedLetters }: KeyboardProps) {
+function Keyboard({ guessedLetters, onGuessLetter }: KeyboardProps) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const letter = event.key.toLowerCase();
 
       if (KEY_ROWS.flat().includes(letter)) {
-        console.log("letter", letter);
+        onGuessLetter(letter);
       }
     };
 
@@ -30,7 +31,7 @@ function Keyboard({ guessedLetters }: KeyboardProps) {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [onGuessLetter]);
 
   return (
     <div className="flex flex-col items-center gap-2">
@@ -43,6 +44,7 @@ function Keyboard({ guessedLetters }: KeyboardProps) {
               <button
                 key={letter}
                 disabled={isGuessed}
+                onClick={() => onGuessLetter(letter)}
                 className={`transtion-colors text-whitesm:h-10 h-8 w-8 rounded uppercase focus:outline-none focus:ring-2 focus:ring-pink sm:w-10 ${isGuessed ? KEY_CLASSES.guessed : KEY_CLASSES.unguessed}`}
               >
                 {letter}

@@ -1,6 +1,5 @@
 import { motion } from "motion/react";
-
-const GUESSES = 6;
+import { GUESSES } from "@/constants";
 
 type HangmanFigureProps = {
   remainingGuesses: number;
