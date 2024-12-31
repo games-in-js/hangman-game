@@ -1,5 +1,6 @@
 import HangmanFigure from "@/components/HangmanFigure";
 import WordDisplay from "@/components/WordDisplay";
+import Keyboard from "@/components/Keyboard";
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
       </div>
 
       <WordDisplay word="vercel" guessedLetters={new Set(["v", "e", "c"])} />
+
+      <Keyboard guessedLetters={new Set(["v", "e", "c", "w"])} />
     </div>
   );
 }
